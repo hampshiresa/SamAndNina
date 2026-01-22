@@ -8,10 +8,13 @@
 <style>
 :root{
   --ink:#0b2b38;
+  --muted:#4c5d63;
+  --bg:#f5f7f8;
   --glass: rgba(255,255,255,.88);
   --glass2: rgba(255,255,255,.94);
   --radius: 22px;
   --shadow: 0 20px 50px rgba(0,0,0,.18);
+  --line: rgba(0,0,0,.08);
 }
 
 *{box-sizing:border-box}
@@ -20,13 +23,15 @@ body{
   margin:0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   color:var(--ink);
-  background:#f5f7f8;
+  background:var(--bg);
 }
 
-section{padding:70px 6vw}
+section{padding:72px 6vw}
 h1,h2,h3{margin:0 0 12px}
-p{margin:0 0 14px; line-height:1.6}
+p{margin:0 0 14px; line-height:1.65}
 a{color:inherit;text-decoration:none}
+ul{margin:10px 0 0 18px; padding:0}
+li{margin:8px 0}
 
 /* NAV */
 .nav{
@@ -34,8 +39,8 @@ a{color:inherit;text-decoration:none}
   top:0;
   z-index:50;
   backdrop-filter: blur(10px);
-  background: rgba(245,247,248,.75);
-  border-bottom: 1px solid rgba(0,0,0,.06);
+  background: rgba(245,247,248,.78);
+  border-bottom: 1px solid var(--line);
 }
 .navInner{
   display:flex;
@@ -45,19 +50,20 @@ a{color:inherit;text-decoration:none}
   gap:12px;
 }
 .brand{
-  font-weight:700;
+  font-weight:800;
   letter-spacing:.2px;
 }
 .links{
   display:flex;
   gap:10px;
   flex-wrap:wrap;
+  justify-content:flex-end;
 }
 .links a{
   padding:8px 12px;
   border-radius:999px;
-  background: rgba(255,255,255,.8);
-  border: 1px solid rgba(0,0,0,.06);
+  background: rgba(255,255,255,.85);
+  border: 1px solid var(--line);
   font-size:14px;
 }
 .links a:hover{background:white}
@@ -69,26 +75,26 @@ a{color:inherit;text-decoration:none}
 
 /* HERO */
 .hero{
-  min-height:90vh;
+  min-height:92vh;
   background:
-    linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.55)),
+    linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.58)),
     url("photos/_MG_0359-Enhanced-NR.jpg") center/cover no-repeat;
   display:flex;
   align-items:flex-end;
-  padding:40px 6vw;
+  padding:42px 6vw;
 }
-
 .heroBox{
   background:var(--glass);
   border-radius:var(--radius);
   padding:34px;
-  max-width:1100px;
+  max-width:1120px;
   width:100%;
   display:grid;
-  grid-template-columns: 1.3fr .7fr;
+  grid-template-columns: 1.35fr .65fr;
   gap:28px;
+  border: 1px solid rgba(255,255,255,.45);
+  box-shadow: 0 20px 55px rgba(0,0,0,.18);
 }
-
 .badge{
   display:inline-block;
   padding:6px 12px;
@@ -97,7 +103,6 @@ a{color:inherit;text-decoration:none}
   font-size:13px;
   margin-bottom:14px;
 }
-
 .countdown{
   display:flex;
   gap:10px;
@@ -109,17 +114,56 @@ a{color:inherit;text-decoration:none}
   padding:10px 14px;
   border-radius:12px;
   text-align:center;
-  min-width:72px;
+  min-width:78px;
+  border: 1px solid var(--line);
 }
-
+.ctas{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:16px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:12px 14px;
+  border-radius:12px;
+  background:#0b2b38;
+  color:white;
+  font-weight:700;
+  border:1px solid #0b2b38;
+}
+.btn.secondary{
+  background:white;
+  color:var(--ink);
+  border:1px solid var(--line);
+}
+.btn:hover{filter:brightness(0.98)}
 .card{
   background:var(--glass2);
   border-radius:18px;
   padding:20px;
+  border: 1px solid rgba(0,0,0,.08);
 }
 
-/* FAVORITES */
-.favorites h2{margin-bottom:24px}
+/* FAVORITES STRIP */
+.favorites{
+  padding-top:56px;
+}
+.favoritesHead{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:18px;
+}
+.favoritesHead p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+}
 .strip{
   display:grid;
   grid-template-columns: repeat(3,1fr);
@@ -127,9 +171,83 @@ a{color:inherit;text-decoration:none}
 }
 .strip img{
   width:100%;
-  height:280px;
+  height:300px;
   object-fit:cover;
   border-radius:18px;
+  border: 1px solid var(--line);
+}
+
+/* SECTION CARDS */
+.wrap{
+  max-width:1120px;
+  margin:0 auto;
+}
+.panel{
+  background:white;
+  border-radius:18px;
+  padding:22px;
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
+}
+.grid2{
+  display:grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap:18px;
+  align-items:start;
+}
+.mini{font-size:13px; color:var(--muted)}
+.hr{
+  height:1px;
+  background: var(--line);
+  margin:14px 0;
+}
+
+/* THINGS TO DO */
+.todoGrid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap:14px;
+  margin-top:14px;
+}
+.todo{
+  background:#ffffff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:16px;
+}
+.todo h3{
+  margin-bottom:8px;
+  font-size:16px;
+}
+.todo p{margin:0; color:var(--muted); font-size:13px; line-height:1.55}
+
+/* RSVP */
+.rsvpWrap{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:18px;
+  align-items:start;
+}
+.rsvpTop{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.deadline{
+  margin:0;
+  font-size:14px;
+  color:var(--muted);
+  text-align:left; /* left, per your request */
+}
+.deadline b{color:var(--ink)}
+.rsvpBox{
+  background:white;
+  border-radius:18px;
+  padding:22px;
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
 }
 
 /* GALLERY */
@@ -137,73 +255,52 @@ a{color:inherit;text-decoration:none}
   display:grid;
   grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
   gap:18px;
+  margin-top:14px;
 }
 .gallery img{
   width:100%;
-  height:360px;
+  height:380px;
   object-fit:cover;
   border-radius:18px;
+  border: 1px solid var(--line);
 }
 
-/* RSVP */
-.rsvpWrap{
-  max-width:1100px;
-  margin:0 auto;
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap:18px;
-  align-items:start;
-}
-.rsvpBox{
-  background:white;
-  border-radius:18px;
-  padding:22px;
-  border: 1px solid rgba(0,0,0,.06);
-  box-shadow: 0 10px 30px rgba(0,0,0,.06);
-}
-.btn{
-  display:inline-block;
-  padding:12px 14px;
-  border-radius:12px;
-  background:#0b2b38;
-  color:white;
-  font-weight:600;
-}
-.mini{
-  font-size:13px;
-  color:#4c5d63;
-}
-
+/* FOOTER */
 footer{
   text-align:center;
-  padding:50px 20px;
+  padding:56px 20px;
   font-size:14px;
   color:#555;
 }
 
-@media(max-width:900px){
+/* RESPONSIVE */
+@media(max-width:980px){
   .heroBox{grid-template-columns:1fr}
   .strip{grid-template-columns:1fr}
+  .grid2{grid-template-columns:1fr}
   .rsvpWrap{grid-template-columns:1fr}
+  .todoGrid{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
 
-<!-- Sticky nav with RSVP tab -->
+<!-- NAV -->
 <div class="nav">
   <div class="navInner">
     <div class="brand">Nina & Samuel</div>
     <div class="links">
       <a href="#top">Home</a>
       <a href="#travel">Travel</a>
+      <a href="#things">Things to do</a>
       <a href="#gallery">Gallery</a>
       <a class="primary" href="#rsvp">RSVP</a>
     </div>
   </div>
 </div>
 
+<!-- HERO -->
 <header class="hero" id="top">
   <div class="heroBox">
     <div>
@@ -214,11 +311,17 @@ footer{
         We can’t wait to celebrate with you — sun, sand, and all.
       </p>
 
-      <div class="countdown">
+      <div class="countdown" aria-label="Countdown to wedding day">
         <div class="time"><b id="d">—</b><br>Days</div>
         <div class="time"><b id="h">—</b><br>Hours</div>
         <div class="time"><b id="m">—</b><br>Minutes</div>
         <div class="time"><b id="s">—</b><br>Seconds</div>
+      </div>
+
+      <div class="ctas">
+        <a class="btn" href="#rsvp">RSVP</a>
+        <a class="btn secondary" href="#travel">Travel planning</a>
+        <a class="btn secondary" href="#things">Things to do</a>
       </div>
     </div>
 
@@ -230,72 +333,185 @@ footer{
         <li><b>Vibe:</b> Beachy · Light & breezy</li>
         <li><b>Dress Code:</b> Beach formal</li>
       </ul>
+      <div class="hr"></div>
+      <p class="mini">
+        We recommend arriving at least a day early so you can settle in and enjoy the island.
+      </p>
     </div>
   </div>
 </header>
 
+<!-- FAVORITES -->
 <section class="favorites">
-  <h2>A Few Favorites</h2>
-  <div class="strip">
-    <img src="photos/_MG_0316.jpg" alt="Engagement photo 1">
-    <img src="photos/_MG_0202.jpg" alt="Engagement photo 2">
-    <img src="photos/_MG_0593.jpg" alt="Engagement photo 3">
+  <div class="wrap">
+    <div class="favoritesHead">
+      <h2>A Few Favorites</h2>
+      <p>Some engagement highlights — more below.</p>
+    </div>
+    <div class="strip">
+      <img src="photos/_MG_0316.jpg" alt="Engagement photo - favorites 1">
+      <img src="photos/_MG_0202.jpg" alt="Engagement photo - favorites 2">
+      <img src="photos/_MG_0593.jpg" alt="Engagement photo - favorites 3">
+    </div>
   </div>
 </section>
 
+<!-- TRAVEL -->
 <section id="travel">
-  <h2>Travel Information</h2>
-  <p>
-    Guests should fly into <b>Manila (MNL)</b>, then take a domestic flight to
-    <b>Caticlan Airport (Boracay)</b>.
-  </p>
-  <p>
-    <b>If you are staying at The Lind:</b> the hotel will arrange airport pickup
-    and transfers directly to the resort.
-  </p>
-</section>
+  <div class="wrap">
+    <h2>Travel Planning</h2>
 
-<!-- RSVP section (tab scrolls here) -->
-<section id="rsvp">
-  <h2>RSVP</h2>
-
-  <div class="rsvpWrap">
-    <div class="rsvpBox">
-      <h3>Kindly Respond</h3>
-      <p class="mini">
-        Please RSVP by <b>April 1, 2026</b>.  
-        Kindly respond only for the names listed on your invitation.
+    <div class="panel">
+      <p>
+        Guests should fly into <b>Manila (MNL)</b>, then take a domestic flight to
+        <b>Caticlan Airport (Boracay)</b>.
       </p>
 
-      <a class="btn"
-         href="https://docs.google.com/forms/d/e/1FAIpQLSf1kcFESDTtqa0JDBd58iQurFW1efplk2iAuke-VRH8QWr_UQ/viewform?usp=header"
-         target="_blank" rel="noopener">
-        Open RSVP Form
-      </a>
+      <p>
+        <b>Time difference:</b> Please be mindful of the time change when planning connections and arrival times.
+      </p>
+
+      <p>
+        <b>Important:</b> Flights from Manila to Caticlan often have a final departure around <b>3:30 PM</b>.
+        Depending on what time you arrive in Manila, you may need to stay in Manila for an extra night to catch
+        the next day’s flight to Boracay.
+      </p>
+
+      <p>
+        <b>If you are staying at The Lind:</b> the hotel will arrange airport pickup and transfers directly to the resort.
+      </p>
     </div>
 
-    <div class="rsvpBox">
-      <h3>Travel Planning</h3>
-      <p class="mini">
-        We recommend booking travel early and arriving at least one day before
-        the celebration to settle in and enjoy the island.
-      </p>
-      <p class="mini">
-        If you are staying at <b>The Lind</b>, airport transfers will be arranged by the hotel.
-      </p>
+    <div style="height:16px"></div>
+
+    <div class="grid2">
+      <div class="panel">
+        <h3>Quick tips</h3>
+        <ul class="mini">
+          <li>Try to arrive in Boracay at least one day before the celebration.</li>
+          <li>Keep a little buffer for travel delays and domestic flight schedules.</li>
+          <li>Bring light, breathable outfits (and a backup plan for rain).</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3>What to pack</h3>
+        <ul class="mini">
+          <li>Sun protection (SPF, hat, sunglasses)</li>
+          <li>Comfortable sandals + one nicer pair for dinner</li>
+          <li>Swimwear / coverups</li>
+          <li>Light layer for flights and evenings</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- THINGS TO DO -->
+<section id="things">
+  <div class="wrap">
+    <h2>Things to Do in Boracay</h2>
+    <p class="mini">
+      If you’re making a trip out of it (highly recommended), here are some fun ideas.
+    </p>
+
+    <div class="todoGrid">
+      <div class="todo">
+        <h3>Island hopping / boat tours</h3>
+        <p>Classic Boracay day — snorkeling stops + beaches + lunch options.</p>
+      </div>
+      <div class="todo">
+        <h3>Sunset sail (Paraw)</h3>
+        <p>Iconic sunset ride on a traditional sailboat. Great for photos.</p>
+      </div>
+      <div class="todo">
+        <h3>Snorkel / scuba</h3>
+        <p>Easy add-on if you like water activities — ask your hotel for trusted operators.</p>
+      </div>
+      <div class="todo">
+        <h3>White Beach stroll</h3>
+        <p>Sunset walk + shops + casual bars. Perfect “do nothing” afternoon.</p>
+      </div>
+      <div class="todo">
+        <h3>Puka Shell Beach</h3>
+        <p>A calmer beach vibe and a nice change of pace from the busiest areas.</p>
+      </div>
+      <div class="todo">
+        <h3>Spa / massage day</h3>
+        <p>Recover from travel. Great pre-wedding reset.</p>
+      </div>
+      <div class="todo">
+        <h3>Nightlife</h3>
+        <p>Beachfront lounges, live music, and nightlife spots (keep it fun + safe).</p>
+      </div>
+      <div class="todo">
+        <h3>D’Mall + food crawl</h3>
+        <p>Easy shopping + lots of dining options for groups.</p>
+      </div>
+      <div class="todo">
+        <h3>Relax</h3>
+        <p>Honestly… the best plan is beach time, good food, and no schedule.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section id="rsvp">
+  <div class="wrap">
+    <div class="rsvpTop">
+      <h2>RSVP</h2>
+      <!-- moved left-aligned under RSVP area (not floating elsewhere) -->
+      <p class="deadline"><b>Kindly respond by:</b> <span>RSVP deadline coming soon</span></p>
+    </div>
+
+    <div class="rsvpWrap">
+      <div class="rsvpBox">
+        <h3>RSVP Form</h3>
+        <p class="mini">
+          Please use the link below to RSVP. If you’re responding for your household,
+          include everyone who will be attending.
+        </p>
+        <div class="hr"></div>
+        <a class="btn"
+           href="https://docs.google.com/forms/d/e/1FAIpQLSf1kcFESDTtqa0JDBd58iQurFW1efplk2iAuke-VRH8QWr_UQ/viewform?usp=header"
+           target="_blank" rel="noopener">
+          Open RSVP Form
+        </a>
+        <p class="mini" style="margin-top:10px;">
+          (The form opens in a new tab so it’s easy on mobile.)
+        </p>
+      </div>
+
+      <div class="rsvpBox">
+        <h3>Heads up</h3>
+        <p class="mini">
+          If you don’t see your name or you have a question about your invite,
+          please reach out to us directly.
+        </p>
+        <div class="hr"></div>
+        <p class="mini">
+          Travel details and timing matter for Boracay — especially with Manila connections —
+          so we recommend booking early.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
 <section id="gallery">
-  <h2>Gallery</h2>
-  <div class="gallery">
-    <img src="photos/_MG_0012-Enhanced-NR.jpg" alt="Engagement photo 4">
-    <img src="photos/_MG_0073-Enhanced-NR.jpg" alt="Engagement photo 5">
-    <img src="photos/_MG_0080-Enhanced-NR.jpg" alt="Engagement photo 6">
-    <img src="photos/_MG_0148-Enhanced-NR.jpg" alt="Engagement photo 7">
-    <img src="photos/_MG_0322-Enhanced-NR.jpg" alt="Engagement photo 8">
-    <img src="photos/_MG_0677.jpg" alt="Engagement photo 9">
+  <div class="wrap">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <!-- No duplicates: using each file once -->
+      <img src="photos/_MG_0012-Enhanced-NR.jpg" alt="Engagement photo 1">
+      <img src="photos/_MG_0073-Enhanced-NR.jpg" alt="Engagement photo 2">
+      <img src="photos/_MG_0080-Enhanced-NR.jpg" alt="Engagement photo 3">
+      <img src="photos/_MG_0148-Enhanced-NR.jpg" alt="Engagement photo 4">
+      <img src="photos/_MG_0322-Enhanced-NR.jpg" alt="Engagement photo 5">
+      <img src="photos/_MG_0677.jpg" alt="Engagement photo 6">
+    </div>
   </div>
 </section>
 
@@ -304,9 +520,11 @@ footer{
 </footer>
 
 <script>
-/* Countdown (June 1, 2026) */
+/* Countdown (June 1, 2026)
+   NOTE: This uses a fixed UTC time so it’s consistent.
+   If you want it tied to a specific local time, tell me the ceremony start time + timezone. */
 (function(){
-  const target = new Date("2026-06-01T16:00:00Z"); // approx; adjust later if you want
+  const target = new Date("2026-06-01T16:00:00Z"); // placeholder UTC time
   const dEl=document.getElementById("d");
   const hEl=document.getElementById("h");
   const mEl=document.getElementById("m");
